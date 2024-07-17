@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import ExibeDocumentario from './components/ExibeDocumentario';
+import Documentario from './components/Documentario';
 
-function App() {
+const App = () => {
+  const [documentaries, setDocumentaries] = useState([]);
+  const [currentDocumentary, setCurrentDocumentary] = useState(null);
+
+  const addDocumentary = (documentary) => {
+    if (currentDocumentary) {
+      setDocumentaries(documentaries.map(doc => 
+        doc.id === currentDocumentary.id ? documentary : doc
+      ));
+      setCurrentDocumentary(null);
+    } else {
+      setDocumentaries([...documentaries, documentary]);
+    }
+  };
+
+  const editDocumentary = (documentary) => {
+    setCurrentDocumentary(documentary);
+  };
+
+  const removeDocumentary = (id) => {
+    setDocumentaries(documentaries.filter(doc => doc.id !== id));
+    if (currentDocumentary && currentDocumentary.id === id) {
+      setCurrentDocumentary(null);
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <h1>Lista de Documentários</h1>
+      <Documentario addDocumentary={addDocumentary} currentDocumentary={currentDocumentary} />
+      <ExibeDocumentario 
+        documentaries={documentaries} 
+        editDocumentary={editDocumentary} 
+        removeDocumentary={removeDocumentary} 
+      />
     </div>
   );
-}
+};
 
 export default App;

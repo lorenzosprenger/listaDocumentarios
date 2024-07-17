@@ -1,70 +1,99 @@
-# Getting Started with Create React App
+# Lista de Documentários
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Objetivo
+Esta aplicação foi desenvolvida para gerenciar uma lista de documentários, abordando conceitos de componentes, props e hooks utilizando a biblioteca React.
 
-## Available Scripts
+## Estrutura do Projeto
+O projeto está organizado da seguinte forma:
 
-In the project directory, you can run:
+/src
+    /components
+        ExibeDocumentario.jsx
+        Documentario.jsx
+App.js
+index.js
+App.css
+README.md
 
-### `npm start`
+## Componentes
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### `App.js`
+O componente principal da aplicação que gerencia o estado dos documentários e define as funções para adicionar, editar e remover documentários.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Estado (`useState`)**: 
+  - `documentaries`: Array que contém a lista de documentários.
+  - `currentDocumentary`: Documentário que está sendo editado.
 
-### `npm test`
+- **Funções**:
+  - `addDocumentary`: Adiciona um novo documentário ou atualiza um existente.
+  - `editDocumentary`: Define o documentário atual para edição.
+  - `removeDocumentary`: Remove um documentário da lista.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Renderização**:
+  - Renderiza o componente `Documentario` passando as funções `addDocumentary` e o `currentDocumentary`.
+  - Renderiza o componente `ExibeDocumentario` passando a lista de documentários, e as funções `editDocumentary` e `removeDocumentary`.
 
-### `npm run build`
+### `ExibeDocumentario.jsx`
+Componente que exibe a lista de documentários. Recebe a lista de documentários e as funções de edição e remoção como props.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **Props**:
+  - `documentaries`: Array com a lista de documentários.
+  - `editDocumentary`: Função para editar um documentário.
+  - `removeDocumentary`: Função para remover um documentário.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Renderização**:
+  - Mapeia a lista de documentários para exibição, com botões para editar e remover cada documentário.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### `Documentario.jsx`
+Componente que gerencia o formulário para adicionar e editar documentários. Mantém o estado do formulário e lida com o envio para adicionar novos documentários ou atualizar um existente.
 
-### `npm run eject`
+- **Estado (`useState`)**:
+  - `title`: Título do documentário.
+  - `description`: Descrição do documentário.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- **Efeito (`useEffect`)**:
+  - Atualiza os campos do formulário quando um documentário é selecionado para edição.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **Função**:
+  - `handleSubmit`: Lida com o envio do formulário para adicionar ou atualizar um documentário.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- **Renderização**:
+  - Renderiza um formulário com campos para título e descrição, e um botão para enviar.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### `index.js`
+Ponto de entrada da aplicação React. Renderiza o componente `App`.
 
-## Learn More
+### `App.css`
+Arquivo CSS básico para estilização da aplicação.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Instruções de Instalação e Uso
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Clone o repositório para sua máquina local:
+    ```bash
+    git clone https://github.com/lorenzosprenger/listaDocumentarios.git
+    
+    cd lista-documentarios
+    ```
 
-### Code Splitting
+2. Instale as dependências do projeto:
+    ```bash
+    npm install
+    ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+3. Execute a aplicação:
+    ```bash
+    npm start
+    ```
 
-### Analyzing the Bundle Size
+4. Acesse a aplicação no navegador:
+    ```
+    http://localhost:3000
+    ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+## Estilo e Layout
+A aplicação utiliza CSS básico para estilização e é responsiva, adaptando-se bem a diferentes tamanhos de tela.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Este projeto foi desenvolvido como parte de um trabalho individual para aprender e aplicar conceitos de React.
